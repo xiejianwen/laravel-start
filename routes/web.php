@@ -14,7 +14,10 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('article/{id}', 'ArticleController@show');
+Route::post('comment', 'CommentController@store');
 
+//后台路由
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'HomeController@index');
     Route::resource('/article', 'ArticleController');
